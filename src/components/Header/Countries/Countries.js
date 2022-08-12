@@ -10,8 +10,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const Countries = () => {
+const Countries = ({ region, searchTerm }) => {
    const [countries, setCountries] = React.useState([]);
+   const [displayCountries, setDisplayCountries] = React.useState([]);
    const [loading, setLoading] = React.useState(false);
    const [error, setError] = React.useState(null);
 
@@ -23,6 +24,7 @@ const Countries = () => {
          .then((res) => {
             console.log(res.data);
             setCountries(res.data);
+            setDisplayCountries(res.data);
          })
          .catch((err) => {
             setError(err.message);
@@ -31,6 +33,33 @@ const Countries = () => {
             setLoading(false);
          });
    }, []);
+
+   useEffect(() => {
+      if (searchTerm) {
+         setDisplayCountries(
+            countries.filter((country) => {
+               return country.name.common
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase());
+            })
+         );
+      }
+   }, [searchTerm]);
+
+   useEffect(() => {
+      console.log('region', region);
+      setDisplayCountries(
+         countries.filter((country) => {
+            if (country?.continents) {
+               return country.continents[0] === region;
+            }
+         })
+      );
+   }, [region]);
+
+   console.log({
+      region,
+   });
 
    if (loading) {
       return <div>Loading...</div>;
@@ -43,7 +72,7 @@ const Countries = () => {
    return (
       <Box>
          <Grid container spacing={4} justifyContent='center'>
-            {countries.map((country) => (
+            {displayCountries?.map((country) => (
                <Grid item>
                   <Card sx={{ width: 250, bgcolor: 'dark.main' }}>
                      <CardMedia

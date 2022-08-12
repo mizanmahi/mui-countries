@@ -9,26 +9,17 @@ import { Box, InputAdornment, TextField } from '@mui/material';
 
 const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
-const SearchArea = () => {
+const SearchArea = ({ handleRegionClick, region, setSearchTerm, searchTerm }) => {
    const [anchorEl, setAnchorEl] = useState(null);
    const open = Boolean(anchorEl);
+
    const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
    };
+
    const handleClose = () => {
       setAnchorEl(null);
    };
-
-   const [region, setRegion] = useState(null);
-
-   const handleRegionClick = (region) => {
-      setRegion(region);
-      handleClose();
-   };
-
-   console.log({
-      region,
-   });
 
    return (
       <Box
@@ -41,6 +32,8 @@ const SearchArea = () => {
       >
          <TextField
             placeholder='Search country'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             size='small'
             InputProps={{
                startAdornment: (
@@ -84,6 +77,7 @@ const SearchArea = () => {
                aria-expanded={open ? 'true' : undefined}
                onClick={handleClick}
                endIcon={<ExpandMoreIcon />}
+               disableRipple
                sx={{
                   bgcolor: 'dark.main',
                   color: 'light.secondary',
@@ -113,7 +107,9 @@ const SearchArea = () => {
             >
                {regions.map((region, index) => (
                   <MenuItem
-                     onClick={() => handleRegionClick(region)}
+                     onClick={() =>
+                        handleRegionClick(region, () => handleClose())
+                     }
                      key={index}
                   >
                      {region}
