@@ -5,7 +5,7 @@ const Header = () => {
    return (
       <Box
          sx={{
-            bgcolor: 'dark.main',
+            bgcolor: 'main.primary',
          }}
       >
          <Container>
@@ -17,7 +17,7 @@ const Header = () => {
                <Typography
                   sx={{
                      fontWeight: 600,
-                     color: 'light.secondary',
+                     color: 'main.light',
                   }}
                >
                   Where In The World?

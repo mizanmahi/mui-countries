@@ -9,7 +9,12 @@ import { Box, InputAdornment, TextField } from '@mui/material';
 
 const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
-const SearchArea = ({ handleRegionClick, region, setSearchTerm, searchTerm }) => {
+const SearchArea = ({
+   handleRegionClick,
+   region,
+   setSearchTerm,
+   searchTerm,
+}) => {
    const [anchorEl, setAnchorEl] = useState(null);
    const open = Boolean(anchorEl);
 
@@ -40,21 +45,21 @@ const SearchArea = ({ handleRegionClick, region, setSearchTerm, searchTerm }) =>
                   <InputAdornment position='start'>
                      <SearchIcon
                         sx={{
-                           color: 'light.secondary',
+                           color: 'main.light',
                         }}
                      />
                   </InputAdornment>
                ),
             }}
             sx={{
-               bgcolor: 'dark.main',
+               bgcolor: 'main.primary',
                borderRadius: '4px',
                px: 2,
                width: '300px',
                maxWidth: '100%',
                '& .MuiOutlinedInput-input': {
                   fontWeight: 500,
-                  color: 'light.secondary',
+                  color: 'main.light',
                },
                '& .MuiOutlinedInput-root': {
                   '& fieldset': {
@@ -79,11 +84,16 @@ const SearchArea = ({ handleRegionClick, region, setSearchTerm, searchTerm }) =>
                endIcon={<ExpandMoreIcon />}
                disableRipple
                sx={{
-                  bgcolor: 'dark.main',
-                  color: 'light.secondary',
+                  bgcolor: 'main.primary',
+                  color: 'main.light',
                   textTransform: 'capitalize',
                   px: 2,
                   py: 1,
+                  minWidth: '130px',
+
+                  '&:hover': {
+                     bgcolor: 'main.primary',
+                  },
                }}
             >
                {region ? region : 'Filter By Region'}
@@ -98,8 +108,8 @@ const SearchArea = ({ handleRegionClick, region, setSearchTerm, searchTerm }) =>
                }}
                sx={{
                   '& .MuiPaper-root': {
-                     bgcolor: 'dark.main',
-                     color: 'light.secondary',
+                     bgcolor: 'main.primary',
+                     color: 'main.light',
                      mt: 0.5,
                      width: '154.109px',
                   },

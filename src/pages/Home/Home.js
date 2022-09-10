@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
 import React, { useState } from 'react';
-import Countries from '../../components/Header/Countries/Countries';
-import SearchArea from '../../components/Header/SearchArea/SearchArea';
+import Countries from '../../components/Countries/Countries';
+import SearchArea from '../../components/SearchArea/SearchArea';
 
 const Home = () => {
    const [region, setRegion] = useState(null);
@@ -15,7 +15,7 @@ const Home = () => {
    return (
       <Box
          sx={{
-            bgcolor: 'dark.secondary',
+            bgcolor: 'main.secondary',
             minHeight: '100vh',
          }}
       >
@@ -27,8 +27,12 @@ const Home = () => {
                searchTerm={searchTerm}
                setSearchTerm={setSearchTerm}
             />
-            {/* countries */}
-            <Countries region={region} searchTerm={searchTerm} />
+
+            <Countries
+               region={region}
+               searchTerm={searchTerm}
+               setSearchTerm={setSearchTerm}
+            />
          </Container>
       </Box>
    );

@@ -3,14 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { theme } from './theme/theme';
+import { darkTheme } from './theme/theme';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <React.StrictMode>
-      <ThemeProvider theme={theme}>
-         <App />
-      </ThemeProvider>
+      <Router>
+         <ThemeProvider theme={darkTheme}>
+            <App />
+         </ThemeProvider>
+      </Router>
    </React.StrictMode>
 );
 
