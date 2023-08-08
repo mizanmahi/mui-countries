@@ -3,9 +3,9 @@ import React from 'react'
 
 const Loader = () => {
   return (
-    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
+    <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', mt: 3 }}>
       <CircularProgress sx={{
-        color: 'light.secondary',
+        color: 'main.secondary',
       }} />
     </Box>
   )

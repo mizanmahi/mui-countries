@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Box, Button } from '@mui/material';
+import { Container, Box, Button, Typography } from '@mui/material';
 import { BackButton } from './singleCountry.style';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import Loader from '../../components/Loader/Loader';
@@ -70,12 +70,13 @@ const SingleCountry = () => {
                      alignItems: 'center',
                      justifyContent: 'space-between',
                      mt: 8,
+                     columnGap: 5,
                   }}
                >
                   {/* for image */}
                   <Box
                      sx={{
-                        backgroundColor: 'main.primary',
+                        // backgroundColor: 'main.primary',
                         flex: 1,
                      }}
                   >
@@ -83,18 +84,20 @@ const SingleCountry = () => {
                         src={countryData?.flags?.png}
                         alt=''
                         style={{
-                           width: '500px',
+                           minWidth: '100%',
                            height: 'auto',
-                           maxWidth: '100%',
                         }}
                      />
                   </Box>
                   {/* for details */}
-                  <Box sx={{
-                     flex: 1,
-                  }}>
-                     sdfsdf
-
+                  <Box
+                     sx={{
+                        flex: 1,
+                     }}
+                  >
+                     <Typography variant='h3' color={'main.light'}>
+                        {countryData?.name?.common}
+                     </Typography>
                   </Box>
                </Box>
             </Box>

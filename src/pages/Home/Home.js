@@ -27,7 +27,6 @@ const Home = () => {
                searchTerm={searchTerm}
                setSearchTerm={setSearchTerm}
             />
-       
 
             <Countries
                region={region}
